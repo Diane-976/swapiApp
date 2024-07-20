@@ -8,35 +8,43 @@ import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
 
-export default function AlignItemsList({ characters }) {
+export default function AlignItemsList({ characters = [], planets = [], starships = [] }) {
+  const items = characters.length ? characters : planets.length ? planets : starships;
+
   return (
     <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
-        {characters.map((character, index) => (
-        <React.Fragment key={character.name}>
-      <ListItem alignItems="flex-start">
-        <ListItemAvatar>
-          <Avatar alt={character.name} src={`https://via.placeholder.com/40?text=${character.name[0]}`} />
-        </ListItemAvatar>
-        <ListItemText
-          primary={<Link to={`/character/${character.url.match(/\/([0-9]*)\/$/)[1]}`}>{character.name}</Link>}
-          secondary={
-            <React.Fragment>
-              <Typography
-                sx={{ display: 'inline' }}
-                component="span"
-                variant="body2"
-                color="text.primary"
-              >
-                {character.name}
-              </Typography>
-              {` — Height: ${character.height}, Mass: ${character.mass}`}
-            </React.Fragment>
-          }
-        />
-      </ListItem>
-      {index < characters.length - 1 && <Divider variant="inset" component="li" />}
+      {items.map((item, index) => (
+        <React.Fragment key={item.name}>
+          <ListItem alignItems="flex-start">
+            <ListItemAvatar>
+              <Avatar alt={item.name} src={`https://via.placeholder.com/40?text=${item.name[0]}`} />
+            </ListItemAvatar>
+            <ListItemText
+              primary={
+                <Link to={`/${characters.length ? 'character' : planets.length ? 'planet' : 'starship'}/${item.url.match(/\/([0-9]*)\/$/)[1]}`}>
+                  {item.name}
+                </Link>
+              }
+              secondary={
+                <React.Fragment>
+                  <Typography
+                    sx={{ display: 'inline' }}
+                    component="span"
+                    variant="body2"
+                    color="text.primary"
+                  >
+                    {item.name}
+                  </Typography>
+                  {characters.length ? ` — Height: ${item.height}, Mass: ${item.mass}` :
+                    planets.length ? ` — Population: ${item.population}, Climate: ${item.climate}` :
+                    ` — Model: ${item.model}, Manufacturer: ${item.manufacturer}`}
+                </React.Fragment>
+              }
+            />
+          </ListItem>
+          {index < items.length - 1 && <Divider variant="inset" component="li" />}
         </React.Fragment>
-        ))}
+      ))}
     </List>
-    );
-    }
+  );
+}

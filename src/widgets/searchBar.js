@@ -71,7 +71,7 @@ export default function SearchAppBar({ onSearchChange }) {
             <StyledInputBase
               placeholder="Search…"
               inputProps={{ 'aria-label': 'search' }}
-              onChange={onSearchChange} // Appel de la fonction de changement de recherche
+              onChange={(e) => onSearchChange(e.target.value)} // Appel de la fonction de changement de recherche en fonction de l'item
             />
           </Search>
           </IconButton>

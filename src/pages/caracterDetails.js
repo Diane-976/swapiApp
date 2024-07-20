@@ -16,7 +16,7 @@ const CharacterDetail = () => {
   }, [id]);
 
   if (!character) {
-    return <div>Character not found.</div>;
+    return <div>Loading...</div>;
   }
 
   return (

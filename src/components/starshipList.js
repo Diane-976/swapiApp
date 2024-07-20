@@ -1,36 +1,31 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { getStarships } from '../services/caracterService';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemText from '@mui/material/ListItemText';
-import Divider from '@mui/material/Divider';
+import { getStarships, searchStarshipsByName } from '../services/caracterService';
+import AlignItemsList from '../widgets/list';
 
-const StarshipList = () => {
+const StarshipList = ({ searchTerm }) => {
   const [starships, setStarships] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchStarships = async () => {
-      const data = await getStarships();
+        setLoading(true);
+        const data = searchTerm ? await searchStarshipsByName(searchTerm) : await getStarships();
       setStarships(data);
+      setLoading(false);
     };
+
     fetchStarships();
-  }, []);
+  }, [searchTerm]);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
   return (
-    <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
-      {starships.map((starship, index) => (
-        <React.Fragment key={starship.name}>
-          <ListItem alignItems="flex-start">
-            <ListItemText
-              primary={<Link to={`/starship/${starship.url.match(/\/([0-9]*)\/$/)[1]}`}>{starship.name}</Link>}
-              secondary={`Model: ${starship.model}`}
-            />
-          </ListItem>
-          {index < starships.length - 1 && <Divider variant="inset" component="li" />}
-        </React.Fragment>
-      ))}
-    </List>
+    <div>
+      <h1>Star Wars Starships</h1>
+      <AlignItemsList starships={starships} />
+    </div>
   );
 };
 

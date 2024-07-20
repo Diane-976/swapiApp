@@ -54,6 +54,16 @@ export const getPlanetById = async (id) => {
   }
 };
 
+export const searchPlanetsByName = async (name) => {
+    try {
+      const response = await axios.get(`${API_BASE_URL}/planets/?search=${name}`);
+      return response.data.results;
+    } catch (error) {
+      console.error('Error searching planets:', error);
+      return [];
+    }
+  };
+
 // Starships
 export const getStarships = async (page = 1) => {
   try {
@@ -73,4 +83,14 @@ export const getStarshipById = async (id) => {
     console.error('Error fetching starship:', error);
     return null;
   }
+};
+
+export const searchStarshipsByName = async (name) => {
+    try {
+      const response = await axios.get(`${API_BASE_URL}/starships/?search=${name}`);
+      return response.data.results;
+    } catch (error) {
+      console.error('Error searching starships:', error);
+      return [];
+    }
 };
