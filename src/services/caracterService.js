@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 const API_BASE_URL = 'https://swapi.dev/api';
+const BASE_URL = 'https://swapi.dev/api/people/';
 
 export const getCharacters = async (page = 1) => {
   try {
@@ -21,3 +22,10 @@ export const searchCharactersByName = async (name) => {
     return [];
   }
 };
+
+export const getCharacterByName = async (name) => {
+    const response = await fetch(BASE_URL);
+    const data = await response.json();
+    const character = data.results.find(person => person.name === name);
+    return character;
+  };

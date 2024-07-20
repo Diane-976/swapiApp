@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Link } from 'react-router-dom';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import Divider from '@mui/material/Divider';
@@ -17,7 +18,7 @@ export default function AlignItemsList({ characters }) {
           <Avatar alt={character.name} src={`https://via.placeholder.com/40?text=${character.name[0]}`} />
         </ListItemAvatar>
         <ListItemText
-          primary={character.name}
+          primary={<Link to={`/character/${character.name}`}>{character.name}</Link>}
           secondary={
             <React.Fragment>
               <Typography
