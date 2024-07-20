@@ -18,7 +18,7 @@ export default function AlignItemsList({ characters }) {
           <Avatar alt={character.name} src={`https://via.placeholder.com/40?text=${character.name[0]}`} />
         </ListItemAvatar>
         <ListItemText
-          primary={<Link to={`/character/${character.name}`}>{character.name}</Link>}
+          primary={<Link to={`/character/${character.url.match(/\/([0-9]*)\/$/)[1]}`}>{character.name}</Link>}
           secondary={
             <React.Fragment>
               <Typography

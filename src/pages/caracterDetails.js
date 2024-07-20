@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { getCharacterByName } from '../services/caracterService';
+import { getCharacterById } from '../services/caracterService';
 
 const CharacterDetail = () => {
   const { id } = useParams();
@@ -8,7 +8,7 @@ const CharacterDetail = () => {
 
   useEffect(() => {
     const fetchCharacter = async () => {
-      const data = await getCharacterByName(id);
+      const data = await getCharacterById(id);
       setCharacter(data);
     };
 
@@ -16,7 +16,7 @@ const CharacterDetail = () => {
   }, [id]);
 
   if (!character) {
-    return <div>Loading...</div>;
+    return <div>Character not found.</div>;
   }
 
   return (
@@ -30,7 +30,6 @@ const CharacterDetail = () => {
       <p>Birth Year: {character.birth_year}</p>
       <p>Gender: {character.gender}</p>
       <p>Homeworld: {character.homeworld}</p>
-      {/* Ajoute d'autres détails si nécessaire */}
     </div>
   );
 };
