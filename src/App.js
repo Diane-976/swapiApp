@@ -7,6 +7,7 @@ import PlanetDetail from './pages/planetDetails';
 import StarshipList from './components/starshipList';
 import StarshipDetail from './pages/starshipDetails';
 import SearchAppBar from './widgets/searchBar';
+import SimpleBottomNavigation from './widgets/navBar';
 
 function App() {
   const [searchTerm, setSearchTerm] = useState('');
@@ -27,6 +28,7 @@ function App() {
           <Route path="/starships" element={<StarshipList searchTerm={searchTerm}/>} />
           <Route path="/starship/:id" element={<StarshipDetail />} />
         </Routes>
+        <SimpleBottomNavigation/>
       </div>
     </Router>
   );
