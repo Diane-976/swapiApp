@@ -6,6 +6,9 @@ import FaceIcon from '@mui/icons-material/Face';
 import PublicIcon from '@mui/icons-material/Public';
 import RocketIcon from '@mui/icons-material/Rocket';
 import { useNavigate } from 'react-router-dom';
+import SettingsAccessibilityIcon from '@mui/icons-material/SettingsAccessibility';
+import MovieIcon from '@mui/icons-material/Movie';
+import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
 
 export default function SimpleBottomNavigation() {
   const [value, setValue] = React.useState(0);
@@ -23,7 +26,16 @@ export default function SimpleBottomNavigation() {
       case 2:
         navigate('/starships');
         break;
-      default:
+        case 3:
+            navigate('/species');
+        break;
+        case 4:
+            navigate('/films');
+        break;
+        case 5:
+            navigate('/vehicles');
+        break;
+        default:
         break;
     }
   };
@@ -35,9 +47,12 @@ export default function SimpleBottomNavigation() {
         value={value}
         onChange={handleNavigationChange}
       >
-        <BottomNavigationAction label="Character" icon={<FaceIcon />} />
-        <BottomNavigationAction label="Planet" icon={<PublicIcon />} />
-        <BottomNavigationAction label="Starship" icon={<RocketIcon />} />
+        <BottomNavigationAction label="Characters" icon={<FaceIcon />} />
+        <BottomNavigationAction label="Planets" icon={<PublicIcon />} />
+        <BottomNavigationAction label="Starships" icon={<RocketIcon />} />
+        <BottomNavigationAction label="Species" icon={<SettingsAccessibilityIcon />} />
+        <BottomNavigationAction label="Movies" icon={<MovieIcon />} />
+        <BottomNavigationAction label="Vehicles" icon={<DirectionsCarIcon />} />
       </BottomNavigation>
     </Box>
   );

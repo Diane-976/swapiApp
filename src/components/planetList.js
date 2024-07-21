@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { getPlanets, searchPlanetsByName } from '../services/caracterService';
+import { getPlanets, searchPlanetsByName } from '../services/Service';
 import AlignItemsList from '../widgets/list';
 
 const PlanetList = ({ searchTerm }) => {

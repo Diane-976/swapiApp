@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { getPlanetById } from '../services/caracterService';
+import { getPlanetById } from '../services/Service';
 
 const PlanetDetail = () => {
   const { id } = useParams();

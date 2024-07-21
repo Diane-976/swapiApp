@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { getCharacters, searchCharactersByName } from '../services/caracterService';
+import { getCharacters, searchCharactersByName } from '../services/Service';
 import AlignItemsList from '../widgets/list';
 
 const CharacterList = ({ searchTerm }) => {
