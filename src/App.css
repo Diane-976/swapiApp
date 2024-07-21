@@ -43,3 +43,7 @@ li {
     transform: rotate(360deg);
   }
 }
+
+.page-content {
+  padding-bottom: 56px; /* Hauteur de la barre de navigation */
+}

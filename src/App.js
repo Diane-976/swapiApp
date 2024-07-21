@@ -24,22 +24,24 @@ function App() {
 
   return (
     <Router>
-       <div>
+       <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
         <SearchAppBar onSearchChange={handleSearch} />
-        <Routes>
-          <Route path="/" element={<CharacterList searchTerm={searchTerm}/>} />
-          <Route path="/character/:id" element={<CharacterDetail />} />
-          <Route path="/planets" element={<PlanetList searchTerm={searchTerm}/>} />
-          <Route path="/planet/:id" element={<PlanetDetail />} />
-          <Route path="/starships" element={<StarshipList searchTerm={searchTerm}/>} />
-          <Route path="/starship/:id" element={<StarshipDetail />} />
-          <Route path="/films" element={<FilmList searchTerm={searchTerm}/>} />
-          <Route path="/film/:id" element={<FilmDetail />} />
-          <Route path="/species" element={<SpecieList searchTerm={searchTerm} />} />
-          <Route path="/specie/:id" element={<SpecieDetail />} />
-          <Route path="/vehicles" element={<VehicleList searchTerm={searchTerm} />} />
-          <Route path="/vehicle/:id" element={<VehicleDetail />} />
-        </Routes>
+        <div style={{ flex: 1, paddingBottom: '56px' }}> {/* Marge en bas pour la navbar */}
+          <Routes>
+            <Route path="/" element={<CharacterList searchTerm={searchTerm}/>} />
+            <Route path="/character/:id" element={<CharacterDetail />} />
+            <Route path="/planets" element={<PlanetList searchTerm={searchTerm}/>} />
+            <Route path="/planet/:id" element={<PlanetDetail />} />
+            <Route path="/starships" element={<StarshipList searchTerm={searchTerm}/>} />
+            <Route path="/starship/:id" element={<StarshipDetail />} />
+            <Route path="/films" element={<FilmList searchTerm={searchTerm}/>} />
+            <Route path="/film/:id" element={<FilmDetail />} />
+            <Route path="/species" element={<SpecieList searchTerm={searchTerm} />} />
+            <Route path="/specie/:id" element={<SpecieDetail />} />
+            <Route path="/vehicles" element={<VehicleList searchTerm={searchTerm} />} />
+            <Route path="/vehicle/:id" element={<VehicleDetail />} />
+          </Routes>
+        </div>
         <SimpleBottomNavigation/>
       </div>
     </Router>
