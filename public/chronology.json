@@ -4,40 +4,21 @@
       "title": "Préhistoire",
       "date": "Eons - 10 millénaires av.BY",
       "description": "",
-      "characters_involved": [
-        {
-          "name": "Luke Skywalker",
-          "id": "1"
-        },
-        {
-          "name": "Leia Organa",
-          "id": "2"
-        }
-      ]
+      "characters_involved": ""
     },
     {
       "id": 2,
       "title": "Ère de l'Ancienne République",
       "date": "10 millénaires av.BY - vers 5000 av.BY",
       "description": "",
-      "characters_involved": [
-        {
-          "name": "Anakin Skywalker",
-          "id": "3"
-        }
-      ]
+      "characters_involved": ""
     },
     {
         "id": 3,
         "title": "Chute de l'Ancienne République",
         "date": "Vers 5000 - vers 1000 av.BY",
         "description": "",
-        "characters_involved": [
-          {
-            "name": "Anakin Skywalker",
-            "id": "3"
-          }
-        ]
+        "characters_involved": ""
       },
       {
         "id": 4,
@@ -46,8 +27,7 @@
         "description": "",
         "characters_involved": [
           {
-            "name": "Anakin Skywalker",
-            "id": "3"
+            "name": "Yoda"          
           }
         ],
         "details": [
@@ -75,8 +55,13 @@
         "description": "",
         "characters_involved": [
           {
-            "name": "Anakin Skywalker",
-            "id": "3"
+            "name": "Palpatine"
+          },
+          {
+            "name": "Jaybo Hood"
+          },
+          {
+            "name": "Han Solo"
           }
         ],
         "details": [
@@ -99,9 +84,20 @@
         "description": "",
         "characters_involved": [
           {
-            "name": "Anakin Skywalker",
-            "id": "3"
-          }
+            "name": "Padmé Amidala"
+          },
+          {
+            "name": "Luke Skywalker"
+          },
+          {
+            "name": "Leia Organa"
+          },
+          {
+            "name": "Obi-Wan Kenobi"
+          },
+          {
+            "name": "Darth Vader"
+          } 
         ],
         "details": [
             {
@@ -128,8 +124,16 @@
         "description": "",
         "characters_involved": [
           {
-            "name": "Anakin Skywalker",
-            "id": "3"
+            "name": "Rey"
+          },
+          {
+            "name": "Palpatine"
+          },
+          {
+            "name": "Chewbacca"
+          },
+          {
+            "name": "Kylo Ren"
           }
         ],
         "details": [

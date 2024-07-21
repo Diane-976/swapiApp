@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { getCharacterById, getFilmById, getStarshipById, getVehicleById, getPlanetById } from '../services/Service';
+import { getEvents } from '../services/chronologyService';
 
 const CharacterDetail = () => {
   const { id } = useParams();
   const [character, setCharacter] = useState(null);
+  const [events, setEvents] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -25,7 +27,14 @@ const CharacterDetail = () => {
             vehiclesData,
             homeworld: homeworldData,
           });
+
+        const eventsData = await getEvents();
+          const filteredEvents = eventsData.filter(event =>
+            event.characters_involved && event.characters_involved.some(char => char.name === characterData.name)
+          );
+          setEvents(filteredEvents);
         }
+
       } catch (error) {
         console.error('Failed to fetch character data:', error);
       } finally {
@@ -79,6 +88,26 @@ const CharacterDetail = () => {
         {character.vehiclesData.map(vehicle => (
           <li key={vehicle.name}>
             <Link to={`/vehicle/${vehicle.url.match(/\/([0-9]*)\/$/)[1]}`}>{vehicle.name}</Link>
+          </li>
+        ))}
+      </ul>
+
+      <h2>Events</h2>
+      <ul>
+        {events.map(event => (
+          <li key={event.id}>
+            <h3>{event.title} - {event.date}</h3>
+            <p>{event.description}</p>
+            {event.details && (
+              <div>
+                <h4>Details:</h4>
+                <ul>
+                  {event.details.map(detail => (
+                    <li key={detail.id}>{detail.title} - {detail.date}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </li>
         ))}
       </ul>

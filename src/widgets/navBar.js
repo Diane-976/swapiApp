@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router-dom';
 import SettingsAccessibilityIcon from '@mui/icons-material/SettingsAccessibility';
 import MovieIcon from '@mui/icons-material/Movie';
 import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
+import TimelineIcon from '@mui/icons-material/Timeline';
 
 export default function SimpleBottomNavigation() {
   const [value, setValue] = React.useState(0);
@@ -35,6 +36,9 @@ export default function SimpleBottomNavigation() {
         case 5:
             navigate('/vehicles');
         break;
+        case 6:
+            navigate('/timeLine');
+        break;
         default:
         break;
     }
@@ -53,6 +57,7 @@ export default function SimpleBottomNavigation() {
         <BottomNavigationAction label="Species" icon={<SettingsAccessibilityIcon />} />
         <BottomNavigationAction label="Movies" icon={<MovieIcon />} />
         <BottomNavigationAction label="Vehicles" icon={<DirectionsCarIcon />} />
+        <BottomNavigationAction label="TimeLine" icon={<TimelineIcon />} />
       </BottomNavigation>
     </Box>
   );

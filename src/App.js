@@ -14,6 +14,7 @@ import SpecieList from './components/specieList';
 import SpecieDetail from './pages/specieDetails';
 import VehicleList from './components/vehicleList';
 import VehicleDetail from './pages/vehicleDetails';
+import Timeline from './components/timeLine';
 
 function App() {
   const [searchTerm, setSearchTerm] = useState('');
@@ -40,6 +41,7 @@ function App() {
             <Route path="/specie/:id" element={<SpecieDetail />} />
             <Route path="/vehicles" element={<VehicleList searchTerm={searchTerm} />} />
             <Route path="/vehicle/:id" element={<VehicleDetail />} />
+            <Route path="/timeLine" element={<Timeline />} />
           </Routes>
         </div>
         <SimpleBottomNavigation/>
