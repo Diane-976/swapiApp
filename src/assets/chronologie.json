@@ -1,0 +1,158 @@
+[
+    {
+      "id": 1,
+      "title": "Préhistoire",
+      "date": "Eons - 10 millénaires av.BY",
+      "description": "",
+      "characters_involved": [
+        {
+          "name": "Luke Skywalker",
+          "id": "1"
+        },
+        {
+          "name": "Leia Organa",
+          "id": "2"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Ère de l'Ancienne République",
+      "date": "10 millénaires av.BY - vers 5000 av.BY",
+      "description": "",
+      "characters_involved": [
+        {
+          "name": "Anakin Skywalker",
+          "id": "3"
+        }
+      ]
+    },
+    {
+        "id": 3,
+        "title": "Chute de l'Ancienne République",
+        "date": "Vers 5000 - vers 1000 av.BY",
+        "description": "",
+        "characters_involved": [
+          {
+            "name": "Anakin Skywalker",
+            "id": "3"
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "title": "Ère Républicaine",
+        "date": "1019 - 32 av.BY",
+        "description": "",
+        "characters_involved": [
+          {
+            "name": "Anakin Skywalker",
+            "id": "3"
+          }
+        ],
+        "details": [
+            {
+                "id": 4.1,
+                "title": "L'Ancienne République est réorganisée dans la République Galactique[",
+                "date": "1019 - vers 232 av.BY"
+            },
+            {
+                "id": 4.2,
+                "title": "L'Ancienne République est réorganisée dans la République Galactique[",
+                "date": "1019 - vers 232 av.BY"
+            },
+            {
+                "id": 4.3,
+                "title": "Naissance de Chewbacca sur Kashyyyk",
+                "date": "200 av.BY"
+            }
+          ]
+      },
+      {
+        "id": 5,
+        "title": "Chute de la République",
+        "date": "32 - 19 av.BY",
+        "description": "",
+        "characters_involved": [
+          {
+            "name": "Anakin Skywalker",
+            "id": "3"
+          }
+        ],
+        "details": [
+            {
+                "id": 5.1,
+                "title": "Ère Républicaine",
+                "date": "32 - 22 av.BY"
+            },
+            {
+                "id": 5.2,
+                "title": "Guerre des Clones",
+                "date": "22 - 19 av.BY"
+            }
+          ]
+      },
+      {
+        "id": 6,
+        "title": "Ère Impériale",
+        "date": "19 av.BY - 5 ap.BY",
+        "description": "",
+        "characters_involved": [
+          {
+            "name": "Anakin Skywalker",
+            "id": "3"
+          }
+        ],
+        "details": [
+            {
+                "id": 6.1,
+                "title": "Guerre des Clones",
+                "date": "suite, 19 av.BY"
+            },
+            {
+                "id": 6.2,
+                "title": "Première rébellion contre l'Empire Galactique",
+                "date": "19 - 0 av.BY"
+            },
+            {
+                "id": 6.3,
+                "title": "Guerre Civile Galactique",
+                "date": "0 av.BY - 5 ap.BY"
+            }
+          ]
+      },
+      {
+        "id": 7,
+        "title": "Ère de la Nouvelle République",
+        "date": "5 - 35 ap.BY",
+        "description": "",
+        "characters_involved": [
+          {
+            "name": "Anakin Skywalker",
+            "id": "3"
+          }
+        ],
+        "details": [
+            {
+                "id": 7.1,
+                "title": "Guerre Civile Galactique",
+                "date": "suite, 5 ap.BY"
+            },
+            {
+                "id": 7.2,
+                "title": "Post guerre civile",
+                "date": "5 - 28 ap.BY"
+            },
+            {
+                "id": 7.3,
+                "title": "Guerre froide",
+                "date": "29 - 34 ap.BY"
+            },
+            {
+                "id": 7.4,
+                "title": "Conflit entre le Premier Ordre et la Résistance",
+                "date": "34 - 35 ap.BY"
+            }
+          ]
+      }
+  ]
