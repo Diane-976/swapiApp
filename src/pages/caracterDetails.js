@@ -8,6 +8,7 @@ const CharacterDetail = () => {
   const [character, setCharacter] = useState(null);
   const [events, setEvents] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error] = useState(null);
 
   useEffect(() => {
     const fetchCharacter = async () => {
@@ -47,6 +48,10 @@ const CharacterDetail = () => {
 
   if (loading) {
     return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>;
   }
 
   if (!character) {
@@ -96,7 +101,9 @@ const CharacterDetail = () => {
       <ul>
         {events.map(event => (
           <li key={event.id}>
-            <h3>{event.title} - {event.date}</h3>
+            <h3>
+              <Link to={`/timeline`}>{event.title} - {event.date}</Link>
+            </h3>
             <p>{event.description}</p>
             {event.details && (
               <div>
