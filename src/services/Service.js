@@ -33,6 +33,16 @@ export const getCharacterById = async (id) => {
   }
 };
 
+export const getResidentById = async (id) => {
+  try {
+    const response = await axios.get(`${API_BASE_URL}/people/${id}/`);
+    return response.data;
+  } catch (error) {
+    console.error(`Error fetching resident ${id}:`, error);
+    return null;
+  }
+};
+
 // Planets
 export const getPlanets = async (page = 1) => {
   try {

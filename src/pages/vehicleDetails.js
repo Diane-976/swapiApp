@@ -1,22 +1,27 @@
 // src/components/VehicleDetail.js
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { getVehicleById } from '../services/Service';
+import { useParams, Link } from 'react-router-dom';
+import { getVehicleById, getCharacterById, getFilmById } from '../services/Service';
 
 const VehicleDetail = () => {
   const { id } = useParams();
   const [vehicle, setVehicle] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchVehicle = async () => {
-      const data = await getVehicleById(id);
-      setVehicle(data);
+      setLoading(true);
+      const vehicleData = await getVehicleById(id);
+      const pilotsData = await Promise.all(vehicleData.pilots.map(url => getCharacterById(url.match(/\/([0-9]*)\/$/)[1])));
+      const filmsData = await Promise.all(vehicleData.films.map(url => getFilmById(url.match(/\/([0-9]*)\/$/)[1])));
+      setVehicle({ ...vehicleData, pilotsData, filmsData });
+      setLoading(false);
     };
 
     fetchVehicle();
   }, [id]);
 
-  if (!vehicle) {
+  if (loading) {
     return <div>Loading...</div>;
   }
 
@@ -31,6 +36,22 @@ const VehicleDetail = () => {
       <p>Crew: {vehicle.crew}</p>
       <p>Passengers: {vehicle.passengers}</p>
       <p>Cargo Capacity: {vehicle.cargo_capacity}</p>
+      <h2>Pilots</h2>
+      <ul>
+        {vehicle.pilotsData.map(pilot => (
+          <li key={pilot.name}>
+            <Link to={`/character/${pilot.url.match(/\/([0-9]*)\/$/)[1]}`}>{pilot.name}</Link>
+          </li>
+        ))}
+      </ul>
+      <h2>Films</h2>
+      <ul>
+        {vehicle.filmsData.map(film => (
+          <li key={film.title}>
+            <Link to={`/film/${film.url.match(/\/([0-9]*)\/$/)[1]}`}>{film.title}</Link>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };

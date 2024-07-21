@@ -1,20 +1,26 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { getPlanetById } from '../services/Service';
+import { useParams, Link } from 'react-router-dom';
+import { getPlanetById, getResidentById, getFilmById } from '../services/Service';
 
 const PlanetDetail = () => {
   const { id } = useParams();
   const [planet, setPlanet] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchPlanet = async () => {
-      const data = await getPlanetById(id);
-      setPlanet(data);
+      setLoading(true);
+      const planetData = await getPlanetById(id);
+      const residentsData = await Promise.all(planetData.residents.map(url => getResidentById(url.match(/\/([0-9]*)\/$/)[1])));
+      const filmsData = await Promise.all(planetData.films.map(url => getFilmById(url.match(/\/([0-9]*)\/$/)[1])));
+      setPlanet({ ...planetData, residentsData, filmsData });
+      setLoading(false);
     };
+
     fetchPlanet();
   }, [id]);
 
-  if (!planet) {
+  if (loading) {
     return <div>Loading...</div>;
   }
 
@@ -29,6 +35,22 @@ const PlanetDetail = () => {
       <p>Terrain: {planet.terrain}</p>
       <p>Surface Water: {planet.surface_water}</p>
       <p>Population: {planet.population}</p>
+      <h2>Residents</h2>
+      <ul>
+        {planet.residentsData.map(resident => (
+          <li key={resident.name}>
+            <Link to={`/character/${resident.url.match(/\/([0-9]*)\/$/)[1]}`}>{resident.name}</Link>
+          </li>
+        ))}
+      </ul>
+      <h2>Films</h2>
+      <ul>
+        {planet.filmsData.map(film => (
+          <li key={film.title}>
+            <Link to={`/film/${film.url.match(/\/([0-9]*)\/$/)[1]}`}>{film.title}</Link>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };
